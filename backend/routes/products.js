@@ -1,5 +1,7 @@
 const express=require('express')
-
+const multer = require('multer');
+const{v4:uuidv4}=require('uuid');
+const path=require("path")
 
 const {
     getProducts,
@@ -23,6 +25,8 @@ router.post('/',addProduct)
 
 //delete data
 router.delete('/:id',deleteProduct)
+
+
 
 //udate data
 router.patch('/:id',updateProduct)

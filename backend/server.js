@@ -2,11 +2,14 @@ require('dotenv').config()
 
 const express = require('express')
 const mongoose=require('mongoose')
+const cors=require('cors')
 const productsRout=require('./routes/products')
+
 //express app
 const app= express();
 
 //midleware
+app.use(cors())
 app.use(express.json())
 
 app.use((req,res,next)=>{
@@ -28,6 +31,8 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((error)=>{
         console.log(error)
     })
+
+//storage
 
 
 

@@ -26,11 +26,14 @@ const getOneProduct = async(req,res)=>{
 
 //add new product
 const addProduct = async(req,res) => {
-    const {tital,price,quantity,description}=req.body
+    const {image = {
+        data: req.body.image.data,
+        contentType: req.body.image.contentType,
+      },tital,price,quantity,description}=req.body
 
     //add product to db
     try{
-        const product=await Product.create({tital,price,quantity,description})
+        const product=await Product.create({image,tital,price,quantity,description})
         res.status(200).json(product)
     }
     catch (error) {
